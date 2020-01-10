@@ -1,12 +1,111 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %} - Hakai kousen</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    {% block stylesheets %}{% endblock  %}
+
+</head>
+
+<body>
+    <header>
+        {% set route = app.request.attributes.get('_route') %}
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-danger">
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="images/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item{% if route == 'home' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('home') }}">Accueil</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'rules' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('rules') }}">Document</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'pokedex' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('pokedex') }}">Pokédex</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'forum' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('forum') }}">Forum</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'inscription' %} active{% endif %}">
+                       <h4> <a class="nav-link" href="{{ path('inscription') }}">Inscription</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'connexion' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('connexion') }}">Connexion</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'deconnexion' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('deconnexion') }}">Deconnexion</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'profil' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('profil') }}">Profil</a></h4>
+                    </li>
+                    
+        </nav>
+    </header>
+
+    <div class="container-fluid">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+
+    <script src="{{ asset('js/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+<footer class="page-footer font-small blue pt-4">{% block footer %}
+    
+    {% endblock %}
+    
+        
+        <div class="container-fluid text-center text-md-left bg-danger">
+      
+          
+          <div class="row">
+      
+            <div class="col-md-6 mt-md-0 mt-3">
+      
+            
+              <h5 class="text-uppercase">Hakai Kousen</h5>
+              <p>Pour plus d'info.</p>
+      
+            </div>
+         
+            <hr class="clearfix w-100 d-md-none pb-3">
+           
+            <div class="col-md-3 mb-md-0 mb-3">
+      
+              <h5 class="text-uppercase">Links</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Facebook</a>
+                </li>
+                <li>
+                  <a href="#!">Twitter</a>
+                </li>
+                <li>
+                  <a href="#!">Discord</a>
+                </li>
+              </ul>
+      
+            </div>
+         
+      
+          </div>
+          <div class="footer-copyright text-center py-3">
+            © 2020 Copyright
+        </div>
+      
+        </div>
+        </footer>
 </html>
