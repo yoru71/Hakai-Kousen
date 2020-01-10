@@ -18,7 +18,7 @@
     <header>
         {% set route = app.request.attributes.get('_route') %}
         <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-danger">
-            <a class="navbar-brand" href="{{ path('home') }}"><img src="images/logo.png" alt=""></a>
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('images/logo.png')}}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,18 +38,21 @@
                     <li class="nav-item{% if route == 'forum' %} active{% endif %}">
                         <h4><a class="nav-link" href="{{ path('forum') }}">Forum</a></h4>
                     </li>
-                    <li class="nav-item{% if route == 'inscription' %} active{% endif %}">
-                        <h4> <a class="nav-link" href="{{ path('inscription') }}">Inscription</a></h4>
-                    </li>
-                    <li class="nav-item{% if route == 'connexion' %} active{% endif %}">
-                        <h4><a class="nav-link" href="{{ path('connexion') }}">Connexion</a></h4>
-                    </li>
-                    <li class="nav-item{% if route == 'deconnexion' %} active{% endif %}">
-                        <h4><a class="nav-link" href="{{ path('deconnexion') }}">Deconnexion</a></h4>
+                    {% if app.user %}
+                    <li class="nav-item{% if route == 'app_logout' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a></h4>
                     </li>
                     <li class="nav-item{% if route == 'profil' %} active{% endif %}">
                         <h4><a class="nav-link" href="{{ path('profil') }}">Profil</a></h4>
                     </li>
+                    {% else %}
+                    <li class="nav-item{% if route == 'app_register' %} active{% endif %}">
+                        <h4> <a class="nav-link" href="{{ path('app_register') }}">Inscription</a></h4>
+                    </li>
+                    <li class="nav-item{% if route == 'app_login' %} active{% endif %}">
+                        <h4><a class="nav-link" href="{{ path('app_login') }}">Connexion</a></h4>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
