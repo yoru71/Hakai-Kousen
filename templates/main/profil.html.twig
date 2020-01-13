@@ -3,21 +3,21 @@
 {% block title %}Profil{% endblock %}
 
 {% block body %}
-    <div class="row">
+<div class="row">
 
-        <h1 class="col-8 offset-2 mt-5 text-center">Profil</h1>
+    <h1 class="col-8 offset-2 mt-5 text-center">Profil</h1>
 
+</div>
+
+<div class="row">
+    <div class="col-6 offset-3 my-4">
+        Pseudonyme: {{ app.user.pseudonyme}}
+        <br>
+        Email: {{ app.user.email}}
+        <br>
+        Quelque mot: {{ app.user.content}}
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-6 offset-3 my-4">
-            Pseudonyme:
-            <br>
-            Email:
-            <br>
-            Quelque mot:
-        </div>
-    </div>
 
-  
 {% endblock %}

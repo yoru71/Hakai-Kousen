@@ -8,6 +8,10 @@ use App\Entity\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Entity\Article;
+use App\Form\ArticleType;
+use Symfony\Component\HttpFoundation\Request;
+use \DateTime;
 
 class MainController extends AbstractController
 {
@@ -73,8 +77,32 @@ class MainController extends AbstractController
     /**
      * @Route("/sujet", name="sujet")
      */
-    public function sujet()
+    public function sujet(Request $request)
     {
-        return $this->render('main/sujet.html.twig');
+        $newArticle = new Article();
+        $form = $this->createForm(ArticleType::class, $newArticle);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $newArticle
+            ->setDate( new DateTime())
+            ->setAuthor( $this->getUser())
+            ;
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($newArticle);
+            
+            $em->flush();
+
+            $this->addFlash('success', 'Article créé avec succès !');
+
+            return $this->redirectToRoute('forum');
+        }
+
+        return $this->render('main/sujet.html.twig',[
+            'form' => $form->createView()
+        ]);
     }
 }

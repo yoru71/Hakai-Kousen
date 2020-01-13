@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<h1 class="col-6 offset-3 text-center">Incription !</h1>
+<div class="col-6 offset-3 text-center">
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.pseudonyme) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.motDePasse) }}
+</div>
+
+<button class="btn btn-danger col-6 offset-3 text-center">Inscription</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
