@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class MainController extends AbstractController
 {
@@ -13,6 +16,7 @@ class MainController extends AbstractController
      */
     public function home()
     {
+
         return $this->render('main/home.html.twig', [
             'controller_name' => 'MainController',
         ]);
