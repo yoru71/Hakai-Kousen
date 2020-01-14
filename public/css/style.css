@@ -3,7 +3,7 @@
 }
 
 #main-navbar .nav-link.active{
-    color: blue;
+    color: white;
 }
 
 .lbande, .rbande{
@@ -35,4 +35,29 @@ a.discord{
 }
 a.twitter{
     color: #00ACEE;
+}
+.tel{
+    color: rgb(51, 41, 41);
+}
+td{
+    text-align: center;
+}
+table, th, td {
+    border: 2px solid black;
+  } 
+.table1{
+    background-color: rgb(196, 193, 193);
+}
+.table2{
+    font-weight: bold;
+}
+div #list_de_trucs{
+	margin:10px auto;
+	width:100%;
+	min-width:400px;
+	max-width:700px;
+}
+div #list_de_trucs table{
+	margin:0px;
+    width:100%;
 }
