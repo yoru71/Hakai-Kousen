@@ -1,52 +1,38 @@
-body>.background{
-    border-width: 0px 50px 0px 50px;
-    border-style: solid;
-    border-color: #dc3545;
+#main-navbar .nav-item>.nav-link{
+    font-size: 1.5rem;
 }
-#main-navbar .nav-item.active>h4>.nav-link{
-    color: #ffffff;
+
+#main-navbar .nav-link.active{
+    color: blue;
 }
-.social-links_footer{
-    display: flex;/*activation flexbox*/
-    flex-direction: row;
-    text-rendering: auto;
-    padding: 5px;
-    margin: 3px;
+
+.lbande, .rbande{
+    background-color: #DC3545;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: -1;
 }
-.fab{
-    font-size: 25px;
+
+.lbande{
+    left: 0;
 }
-.fa-discord{
-    padding-left: 10px;
+
+.rbande{
+    right: 0;
 }
-.fa-twitter{
-    padding-left: 10px;
+
+.container-fluid{
+    padding: 0 70px;
 }
-h5{
-    color: #ffffff;
+
+a.facebook{
+    color: #3B5998;
 }
-.tel{
-    color: rgb(51, 41, 41);
+a.discord{
+    color: #7289DA;
 }
-td{
-    text-align: center;
-}
-table, th, td {
-    border: 2px solid black;
-  } 
-.table1{
-    background-color: rgb(196, 193, 193);
-}
-.table2{
-    font-weight: bold;
-}
-div #list_de_trucs{
-	margin:10px auto;
-	width:100%;
-	min-width:400px;
-	max-width:700px;
-}
-div #list_de_trucs table{
-	margin:0px;
-    width:100%;
+a.twitter{
+    color: #00ACEE;
 }

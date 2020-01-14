@@ -15,108 +15,57 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-    <div class="background h-100 position-fixed w-100"></div>
-        <header>
-            {% set route = app.request.attributes.get('_route') %}
-            <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-danger">
-                <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('images/logo.png')}}" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item{% if route == 'home' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('home') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item{% if route == 'rules' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('rules') }}">Document</a>
-                        </li>
-                        <li class="nav-item{% if route == 'pokedex' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('pokedex') }}">Pokédex</a>
-                        </li>
-                        <li class="nav-item{% if route == 'forum' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('forum') }}">Forum</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        {% if app.user %}
-                        <li class="nav-item{% if route == 'app_logout' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                        </li>
-                        <li class="nav-item{% if route == 'profil' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('profil') }}">Profil</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item{% if route == 'app_register' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                        </li>
-                        <li class="nav-item{% if route == 'app_login' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
-        </header>
+    <div class="lbande"></div>
+    <div class="rbande"></div>
 
-        {% for message in app.flashes('success') %}
-        <div class="text-center" style="color:green;">{{ message }}</div>
-        {% endfor %}
+    <header>
+        {% set route = app.request.attributes.get('_route') %}
+        <nav id="main-navbar" class="navbar navbar-expand-sm navbar-dark bg-danger">
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if route == 'home' %} active{% endif %}"
+                            href="{{ path('home') }}">Accueil</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        <div class="container-fluid">
-            {% block body %}{% endblock %}
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
+
+    <footer class="page-footer mt-auto font-small bg-danger py-4 container-fluid" id="main-footer">
+
+        <div class="row">
+
+            <div class="col-12 mb-4 mb-xl-0 col-xl-3 text-center">
+                <h2 class="text-light h4 text-uppercase">Nous retrouver</h2>
+                <p class="bg-light d-inline-block p-2 rounded-lg">
+                    <a href="#" class="h2 mx-2 facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" class="h2 mx-2 discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+                    <a href="#" class="h2 mx-2 twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                </p>
+            </div>
+            <div class="col-12 col-xl-3 offset-xl-6 text-center">
+                <p class="my-1">Copyright</p>
+                <p class="my-1">Réalisé par</p>
+            </div>
         </div>
 
-
-    <footer class="page-footer mt-auto font-small pt-4">
-
-
-        <div class="container-fluid text-center text-md-left bg-danger">
-
-            <div class="row">
-
-                <div class="col-md-6 mt-md-3 mt-3">
-
-
-                    <h5 class="my-3 text-uppercase">CONTACTEZ-NOUS :</h5>
-                    <p>Pour plus d'info.</p>
-                    <div class="block-social-links col-md-3 text-center my-4">
-                        <ul class="social-links_footer">
-                            <a href="https://www.facebook.com" target="_blank">
-                                <i class="fab fa-facebook" aria-hidden="true"></i>
-                            </a>
-
-                            <a href="https://www.discord.com/" target="_blank">
-                                <i class="fab fa-discord" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://www.twitter.com/" target="_blank">
-                                <i class="fab fa-twitter" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div id="footer-copyrights" class="dropup col-md-3 ml-auto">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="copyright-img my-2 ml-auto text-center ">
-                                <img src="/images/logo.png" class="img-fluid" alt="Hakai Kousen"></img>
-                            </div>
-
-                            <div class="copyright-txt ml-auto text-center rem-2">Copyright © 2020 Hakai Kousen
-                                <br>
-                                <p><small>Réalisé par Yoru Le Chroniqueur - J. RICHARD</small></p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </div>
     </footer>
 
     <script src="{{ asset('js/jquery-3.4.1.slim.min.js') }}"></script>
