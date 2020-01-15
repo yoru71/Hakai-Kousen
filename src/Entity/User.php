@@ -47,6 +47,22 @@ class User implements UserInterface
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Subject", mappedBy="author")
+     */
+    private $subjects;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="author")
+     */
+    private $messages;
+
+    public function __construct()
+    {
+        $this->subjects = new ArrayCollection();
+        $this->messages = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -146,6 +162,68 @@ class User implements UserInterface
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subject[]
+     */
+    public function getSubjects(): Collection
+    {
+        return $this->subjects;
+    }
+
+    public function addSubject(Subject $subject): self
+    {
+        if (!$this->subjects->contains($subject)) {
+            $this->subjects[] = $subject;
+            $subject->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubject(Subject $subject): self
+    {
+        if ($this->subjects->contains($subject)) {
+            $this->subjects->removeElement($subject);
+            // set the owning side to null (unless already changed)
+            if ($subject->getAuthor() === $this) {
+                $subject->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getAuthor() === $this) {
+                $message->setAuthor(null);
+            }
+        }
 
         return $this;
     }

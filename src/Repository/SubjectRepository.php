@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Sujet;
+use App\Entity\Subject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Sujet|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sujet|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sujet[]    findAll()
- * @method Sujet[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Subject|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Subject|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Subject[]    findAll()
+ * @method Subject[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SujetRepository extends ServiceEntityRepository
+class SubjectRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Sujet::class);
+        parent::__construct($registry, Subject::class);
     }
 
     // /**
-    //  * @return Sujet[] Returns an array of Sujet objects
+    //  * @return Subject[] Returns an array of Subject objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SujetRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Sujet
+    public function findOneBySomeField($value): ?Subject
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

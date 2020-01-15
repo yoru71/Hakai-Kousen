@@ -8,10 +8,11 @@ use App\Entity\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use App\Entity\Article;
-use App\Form\ArticleType;
+use App\Form\CreateForumType;
+use App\Entity\Forum;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
+use App\Entity\Subject;
 
 class MainController extends AbstractController
 {
@@ -38,13 +39,6 @@ class MainController extends AbstractController
     public function pokedex()
     {
         return $this->render('main/pokedex.html.twig');
-    }
-     /**
-     * @Route("/forum", name="forum")
-     */
-    public function forum()
-    {
-        return $this->render('main/forum.html.twig');
     }
     /**
      * @Route("/inscription", name="inscription")
@@ -74,35 +68,36 @@ class MainController extends AbstractController
     {
         return $this->render('main/profil.html.twig');
     }
-    /**
-     * @Route("/sujet", name="sujet")
-     */
-    public function sujet(Request $request)
-    {
-        $newArticle = new Article();
-        $form = $this->createForm(ArticleType::class, $newArticle);
+    // /**
+    //  * @Route("/sujet", name="sujet")
+    //  */
+    // public function sujet(Request $request)
+    // {
+    //     $newArticle = new Article();
+    //     $form = $this->createForm(ArticleType::class, $newArticle);
 
-        $form->handleRequest($request);
+    //     $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $newArticle
-            ->setDate( new DateTime())
-            ->setAuthor( $this->getUser())
-            ;
+    //     if($form->isSubmitted() && $form->isValid()){
+    //         $newArticle
+    //         ->setDate( new DateTime())
+    //         ->setAuthor( $this->getUser())
+    //         ;
 
-            $em = $this->getDoctrine()->getManager();
+    //         $em = $this->getDoctrine()->getManager();
 
-            $em->persist($newArticle);
-            
-            $em->flush();
+    //         $em->persist($newArticle);
 
-            $this->addFlash('success', 'Article créé avec succès !');
+    //         $em->flush();
 
-            return $this->redirectToRoute('forum');
-        }
+    //         $this->addFlash('success', 'Article créé avec succès !');
 
-        return $this->render('main/sujet.html.twig',[
-            'form' => $form->createView()
-        ]);
-    }
+    //         return $this->redirectToRoute('forum');
+    //     }
+
+    //     return $this->render('main/sujet.html.twig',[
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+
 }

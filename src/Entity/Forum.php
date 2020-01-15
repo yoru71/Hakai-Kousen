@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,9 +24,19 @@ class Forum
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Subject", mappedBy="forum", orphanRemoval=true)
+     */
+    private $subjects;
+
+    public function __construct()
+    {
+        $this->subjects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,37 @@ class Forum
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subject[]
+     */
+    public function getSubjects(): Collection
+    {
+        return $this->subjects;
+    }
+
+    public function addSubject(Subject $subject): self
+    {
+        if (!$this->subjects->contains($subject)) {
+            $this->subjects[] = $subject;
+            $subject->setForum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubject(Subject $subject): self
+    {
+        if ($this->subjects->contains($subject)) {
+            $this->subjects->removeElement($subject);
+            // set the owning side to null (unless already changed)
+            if ($subject->getForum() === $this) {
+                $subject->setForum(null);
+            }
+        }
 
         return $this;
     }
