@@ -13,6 +13,7 @@ use App\Form\ArticleType;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
 
+
 class MainController extends AbstractController
 {
     /**
@@ -105,4 +106,12 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    /**
+     * @Route("/change", name="change")
+     */
+    public function change()
+    {
+        return $this->render('main/changePassword.html.twig');   
+    }
+
 }
