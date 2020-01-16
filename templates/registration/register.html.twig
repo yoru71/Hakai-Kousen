@@ -13,12 +13,12 @@
         {# Ouverture du formulaire #}
         {{ form_start(registrationForm) }}
 
+            {{ form_row(registrationForm.pseudonyme) }}
+
             {# Affichage des erreurs générales du formulaire #}
             {{ form_errors(registrationForm) }}
 
             {{ form_row(registrationForm.email) }}
-
-            {{ form_row(registrationForm.pseudonyme) }}
 
             {{ form_row(registrationForm.password) }}
 
