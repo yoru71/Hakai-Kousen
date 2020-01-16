@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+<div class="row">
+
+    <h1 class="col-8 offset-2 mt-5 text-center">Forum</h1>
+
+</div>
+
+<div class="row">
+    <div class="col-12 text-center ">
+        {% for forum in forums %}
+        <p class="bg-danger text-light">
+            <a href="{{path('subjectForum', {id: forum.id })}}" class="bg-danger text-light"> {{ forum.title }}</a>
+            <br>
+            {{ forum.description }}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

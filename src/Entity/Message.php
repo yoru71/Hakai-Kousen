@@ -17,7 +17,19 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Subject", inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $subject;
+
+    /**
+     * @ORM\Column(type="datetime")
      */
     private $publicationDate;
 
@@ -26,19 +38,33 @@ class Message
      */
     private $content;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user")
-     */
-    private $author;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\sujet")
-     */
-    private $sujet;
-
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getSubject(): ?Subject
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?Subject $subject): self
+    {
+        $this->subject = $subject;
+
+        return $this;
     }
 
     public function getPublicationDate(): ?\DateTimeInterface
@@ -61,30 +87,6 @@ class Message
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?user
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?user $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    public function getSujet(): ?sujet
-    {
-        return $this->sujet;
-    }
-
-    public function setSujet(?sujet $sujet): self
-    {
-        $this->sujet = $sujet;
 
         return $this;
     }

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Sujet {% endblock %}
+
+{% block body %}
+<div class="row">
+
+    <h1 class="col-8 offset-2 mt-5 text-center"> Sujet de vue </h1>
+
+</div>
+
+<div class="row">
+    <div class="col-12 text-center bg-danger">
+        {% for subject in forum.subjects %}
+        <p class="bg-danger text-light text-left"> <a href="{{path('MessageSubject', {id: subject.id })}}" class="bg-danger text-light"> {{ subject.title }}</a>
+            <br>
+        </p>
+        <p class="text-light text-right">
+            Par {{ subject.author.pseudonyme }} 
+            <br>
+            le {{ subject.publicationDate|date("m/d/Y") }}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
