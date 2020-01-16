@@ -1,3 +1,14 @@
+/*1er section de la page*/
+@font-face{/**déclare la police**/
+    font-family:"BreeSerif";
+    src: url("../fonts/BreeSerif-Regular.ttf");
+    }
+    @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');/**importation du lien de la police**/
+
+body{
+    font-family:"BreeSerif", Arial;
+}
+    
 #main-navbar .nav-item>.nav-link{
     font-size: 1.5rem;
 }
@@ -60,4 +71,7 @@ div #list_de_trucs{
 div #list_de_trucs table{
 	margin:0px;
     width:100%;
+}
+.feature{
+    color:#ffffff;
 }

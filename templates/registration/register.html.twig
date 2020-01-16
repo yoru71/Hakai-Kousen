@@ -4,11 +4,11 @@
 
 {% block body %}
 
-<h1 class="col-6 offset-3 text-center">Incription !</h1>
+<h1 class="h2 col-4 offset-4 text-center my-5">Inscription</h1>
 
 {# Affichage du formulaire en mode manuel (à la place de {{ form(form) }}) pour pouvoir intégrer le captcha dedans #}
 <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-4 offset-4">
 
         {# Ouverture du formulaire #}
         {{ form_start(registrationForm) }}
@@ -37,6 +37,8 @@
 </div>
 
 {{ form_end(registrationForm) }}
+<p class="col-6 offset-3 my-2 text-center">
+        °°°°°°°°°°°°°°°°°°°°°°°°°°</p>
 {% endblock %}
 
 {% block stylesheets %}

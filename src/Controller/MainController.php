@@ -12,6 +12,7 @@ use App\Entity\Article;
 use App\Form\ArticleType;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 class MainController extends AbstractController
@@ -70,10 +71,13 @@ class MainController extends AbstractController
     }
     /**
      * @Route("/profil", name="profil")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function profil()
     {
-        return $this->render('main/profil.html.twig');
+        return $this->render('main/profil.html.twig', [
+            'user' => $this->getUser()
+        ]);
     }
     /**
      * @Route("/sujet", name="sujet")
