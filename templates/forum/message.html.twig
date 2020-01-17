@@ -24,5 +24,10 @@
         </p>
         {% endfor %}
     </div>
+    {% if app.user %}
+        <div  class="col-12 text-center">
+            {{ form(form) }}    
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

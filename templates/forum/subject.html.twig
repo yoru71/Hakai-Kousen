@@ -12,15 +12,23 @@
 <div class="row">
     <div class="col-12 text-center bg-danger">
         {% for subject in forum.subjects %}
-        <p class="bg-danger text-light text-left"> <a href="{{path('MessageSubject', {id: subject.id })}}" class="bg-danger text-light"> {{ subject.title }}</a>
+        <p class="bg-danger text-light text-left"> <a href="{{path('MessageSubject', {id: subject.id })}}"
+                class="bg-danger text-light"> {{ subject.title }}</a>
             <br>
         </p>
         <p class="text-light text-right">
-            Par {{ subject.author.pseudonyme }} 
+            Par {{ subject.author.pseudonyme }}
             <br>
             le {{ subject.publicationDate|date("m/d/Y") }}
         </p>
         {% endfor %}
+
     </div>
+    {% if app.user %}
+   
+        <div  class="col-12 text-center">
+            {{ form(form) }}    
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

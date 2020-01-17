@@ -72,38 +72,6 @@ class MainController extends AbstractController
             'user' => $this->getUser()
         ]);
     }
-    // /**
-    //  * @Route("/sujet", name="sujet")
-    //  */
-    // public function sujet(Request $request)
-    // {
-    //     $newArticle = new Article();
-    //     $form = $this->createForm(ArticleType::class, $newArticle);
-
-    //     $form->handleRequest($request);
-
-    //     if($form->isSubmitted() && $form->isValid()){
-    //         $newArticle
-    //         ->setDate( new DateTime())
-    //         ->setAuthor( $this->getUser())
-    //         ;
-
-    //         $em = $this->getDoctrine()->getManager();
-
-    //         $em->persist($newArticle);
-
-    //         $em->flush();
-
-    //         $this->addFlash('success', 'Article créé avec succès !');
-
-    //         return $this->redirectToRoute('forum');
-    //     }
-
-    //     return $this->render('main/sujet.html.twig',[
-    //         'form' => $form->createView()
-    //     ]);
-    // }
-
     /**
      * @Route("/change", name="change")
      */
