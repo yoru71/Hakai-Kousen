@@ -5,19 +5,23 @@
 {% block body %}
 <div class="row">
 
-    <h1 class="col-8 offset-2 mt-5 text-center">Forum</h1>
+    <h1 class="h2 col-8 offset-2 mt-5 text-center">Forum</h1>
 
 </div>
+
 
 <div class="row">
-    <div class="col-12 text-center ">
-        {% for forum in forums %}
-        <p class="bg-danger text-light">
-            <a href="{{path('subjectForum', {id: forum.id })}}" class="bg-danger text-light"> {{ forum.title }}</a>
-            <br>
-            {{ forum.description }}
-        </p>
-        {% endfor %}
-    </div>
+    {% for forum in forums %}
+        <div class="col-6 offset-3 text-center card my-1 p-0">
+            <p class="bg-danger text-light">
+                <a href="{{path('subjectForum', {id: forum.id })}}" class="h5 bg-danger text-light"> {{ forum.title }}</a>
+            <div>
+                {{ forum.description }}
+                <br>
+            </div>
+            </p>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}
+
