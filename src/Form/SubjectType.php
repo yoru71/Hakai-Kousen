@@ -47,7 +47,10 @@ class SubjectType extends AbstractType
                 ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Créer Le Sujet'   
+                'label' => 'Créer Le Sujet',
+                'attr' => [
+                    'class' => 'btn btn-danger col-12 text-center'
+                ]   
             ])
         ;
     }

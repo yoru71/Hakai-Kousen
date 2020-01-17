@@ -31,17 +31,17 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {% if route == 'home' %} active{% endif %}"
+                    <li class="nav-item">
+                        <a class="nav-link {% if route == 'home' %} active{% endif %}"
                             href="{{ path('home') }}">Accueil</a>
-                        <li class="nav-item{% if route == 'rules' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('rules') }}">Document</a>
-                        </li>
-                        <li class="nav-item{% if route == 'pokedex' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('pokedex') }}">Pokédex</a>
-                        </li>                            <li class="nav-item{% if route == 'forum' %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('forum') }}">Forum</a>
-                        </li>
+                    <li class="nav-item{% if route == 'rules' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('rules') }}">Document</a>
+                    </li>
+                    <li class="nav-item{% if route == 'pokedex' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('pokedex') }}">Pokédex</a>
+                    </li>
+                    <li class="nav-item{% if route == 'forum' %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('forum') }}">Forum</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -59,6 +59,7 @@
                     <li class="nav-item{% if route == 'app_login' %} active{% endif %}">
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     </li>
+                </ul>
                     {% endif %}
             </div>
         </nav>

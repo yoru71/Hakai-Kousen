@@ -32,7 +32,10 @@ class MessageType extends AbstractType
                 ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Créer Le Message'   
+                'label' => 'Créer Le Message',
+                'attr' => [
+                    'class' => 'btn btn-danger col-12 text-center'
+                ]   
             ])
         ;
     }

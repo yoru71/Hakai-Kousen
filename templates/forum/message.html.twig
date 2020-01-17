@@ -8,12 +8,15 @@
     <h1 class="h2 col-8 offset-2 mt-5 text-center"> Message de vue </h1>
 
 </div>
-
+<div class="row">
+    <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
+        Liste des message du sujet :{{ subject.title }}
+    </p>
+</div>
 <div class="row">
     {% for message in subject.messages %}
     <div class="col-5 offset-3 text-center my-8">
-        <p class="bg-danger text-light text-left p-3">{{ message.subject.title }}
-            <br>
+        <p class="bg-danger text-light text-left p-3">
             {{ message.content }}
         </p>
     </div>

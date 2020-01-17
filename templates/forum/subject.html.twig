@@ -8,6 +8,11 @@
     <h1 class="h2 col-8 offset-2 mt-5 text-center"> Sujet de vue </h1>
 
 </div>
+<div class="row">
+    <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
+        Liste des sujet du forum :  {{ forum.title }}
+    </p>
+</div>
 
 <div class="row">
     {% for subject in forum.subjects %}
