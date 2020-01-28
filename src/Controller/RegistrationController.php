@@ -43,8 +43,6 @@ class RegistrationController extends AbstractController
 
                 $em->flush();
 
-                
-
                 return $this->redirectToRoute('app_login');
             }
         }

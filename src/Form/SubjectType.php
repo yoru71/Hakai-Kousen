@@ -50,7 +50,7 @@ class SubjectType extends AbstractType
                 'label' => 'Créer Le Sujet',
                 'attr' => [
                     'class' => 'btn btn-danger col-12 text-center'
-                ]   
+                ]
             ])
         ;
     }

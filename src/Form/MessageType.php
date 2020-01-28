@@ -35,7 +35,7 @@ class MessageType extends AbstractType
                 'label' => 'Créer Le Message',
                 'attr' => [
                     'class' => 'btn btn-danger col-12 text-center'
-                ]   
+                ]
             ])
         ;
     }

@@ -77,7 +77,7 @@ class MainController extends AbstractController
      */
     public function change()
     {
-        return $this->render('main/changePassword.html.twig');   
+        return $this->render('main/changePassword.html.twig');
     }
 
 }

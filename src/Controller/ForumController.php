@@ -16,7 +16,7 @@ use App\Entity\Subject;
 use App\Entity\Message;
 use App\Form\SubjectType;
 use DateTime;
-use App\Form\MessageType;   
+use App\Form\MessageType;
 
 
 class ForumController extends AbstractController
@@ -79,7 +79,7 @@ class ForumController extends AbstractController
      *@Route("/sujet/{id}/message/", name="MessageSubject")
      */
     public function MessageSubject(Subject $subject, Request $request)
-    {   
+    {
         $newMessage = new Message();
 
         $form = $this->createForm(MessageType::class, $newMessage);
@@ -91,13 +91,13 @@ class ForumController extends AbstractController
             ->setAuthor($this->getUser())
             ->setSubject($subject)
         ;
-            
+
         $em = $this->getDoctrine()->getManager();
-        
+
         $em->persist($newMessage);
 
         $em->flush();
-        
+
         }
 
         return $this->render('forum/message.html.twig', [
