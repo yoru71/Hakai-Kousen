@@ -1,77 +1,88 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Profil{% endblock %}
+{% block title %}   Profil   {% endblock %}
 
 {% block body %}
-<div class="row">
 
-    <h1 class="h2 col-8 offset-2 mt-5 text-center">Votre profil</h1>
+    <div class="row">
+        <h1 class="h2 col-8 offset-2 mt-5 text-center">Votre profil</h1>
+    </div>
 
-</div>
-
-<div class="row flex-lg-nowrap col-8 offset-2 pt-sem-2">
-
-    <div class="col mb-3">
-        <div class="card">
-            <div class="card-body">
-                <div class="e-profile">
-
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <div class="mx-auto" style="width: 100px;">
-                                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
-                                    src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Avatar">
-                            </div>
-                            <div class="mt-2 text-center">
-                                <button class="btn btn-danger" type="button">
-                                    <i class="fa fa-fw fa-camera"></i>
-                                    <span>Changer photo</span>
-                                </button>
-                            </div>
-                            <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                <h4 class="pt-sm-2 pb-1 mb-0 text-center">{{ user.pseudonyme }}</h4>
-                                <p class="mb-0 text-center"> {{ app.user.email }}</p>
-                                <p class="col-6 offset-3 my-3 text-center">
-                                    °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°</p>
-                                <h4 class="col-8 offset-2 my-3 text-center">Rôle sur le site</h4>
-                                <ul class="col-5 offset-5">
-                                    {% for role in app.user.roles %}
-                                    <li>
-                                        {% if role == 'ROLE_USER' %}
-                                        Utilisateur
-                                        {% elseif role == 'ROLE_ADMIN' %}
-                                        Administrateur
-                                        {% endif %}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                                <p class="col-6 offset-3 my-2 text-center">
-                                    °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°</p>
-
-                                <div class="col-8 offset-2 my-3 text-center">
-                                    <h4>Description actuelle</h4>
-                                    {% if app.user.description is null %}
-                                    <p class="text-danger">Aucune description !</p>
-                                    {% else %}
-                                    <p>{{ app.user.description }}</p>
-                                    {% endif %}
+    <div class="row flex-lg-nowrap col-8 offset-2 pt-sem-2">
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="e-profile">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="mx-auto" style="width: 100px;">
+                                    <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
+                                        src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Avatar">
                                 </div>
-
-                                <div class="form-group shadow-textarea col-8 offset-2">
-
-                                    <label for="exampleFormControlTextarea6">Description</label>
-
-                                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
-                                        placeholder="Écrivez quelque chose ici..."></textarea>
-
-
-                                </div>
-
 
                                 <div class="mt-2 text-center">
                                     <button class="btn btn-danger" type="button">
-                                        <span>Sauvegarder</span>
+                                        <i class="fa fa-fw fa-camera"></i>
+                                        <span>Changer photo</span>
                                     </button>
+                                </div>
+
+                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                    <h4 class="pt-sm-2 pb-1 mb-0 text-center">{{ user.pseudonyme }}</h4>        {# Affichage du pseudo de l'utilisateur #}
+                                    <p class="mb-0 text-center"> {{ app.user.email }}</p>                       {# Affichage de l'email de l'utilisateur #}
+                                    <p class="col-6 offset-3 my-3 text-center">
+                                        °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°</p>
+                                    <h4 class="col-8 offset-2 my-3 text-center">Rôle sur le site</h4>
+                                    <ul class="col-5 offset-5">
+
+                                        {% for role in app.user.roles %}
+                                            <li>
+
+                                                {% if role == 'ROLE_USER' %}                                    {# Si l'utlisateur a le ROLE_USER on lui met le role Utilisateur #}
+
+                                                    <p> Utilisateur </p>
+
+                                                {% elseif role == 'ROLE_ADMIN' %}                               {# Sinon si l'utlisateur a le ROLE_ADMIN on lui met le role Administrateur #}
+
+                                                    <p> Administrateur </p> 
+                                                    
+                                                {% endif %}
+
+                                            </li>
+
+                                        {% endfor %}
+
+                                    </ul>
+                                    <p class="col-6 offset-3 my-2 text-center">
+                                        °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°</p>
+
+                                    <div class="col-8 offset-2 my-3 text-center">
+                                        <h4>Description actuelle</h4>
+
+                                        {% if app.user.description is null %}                                   {# Si la description de l'utilisateur est null on lui met "Aucune description !" #}
+
+                                            <p class="text-danger">Aucune description !</p>
+
+                                        {% else %}
+
+                                            <p>{{ app.user.description }}</p>                                   {# Sinon on met la description qui la inserer #}
+
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group shadow-textarea col-8 offset-2">
+                                        <label for="exampleFormControlTextarea6">Description</label>
+
+                                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
+                                            placeholder="Écrivez quelque chose ici..."></textarea>
+                                    </div>
+
+                                    <div class="mt-2 text-center">
+                                        <button class="btn btn-danger" type="button">
+                                            <span>Sauvegarder</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +90,9 @@
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 
 
 {% endblock %}
