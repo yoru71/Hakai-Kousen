@@ -75,3 +75,7 @@ div #list_de_trucs table{
 .feature{
     color:#ffffff;
 }
+
+.byepuce{
+    list-style-type: none; 
+}
