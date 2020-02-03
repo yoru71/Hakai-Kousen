@@ -102,3 +102,6 @@ div #list_de_trucs table{
     color:#ffffff;
 }
 
+.byepuce{
+    list-style-type: none; 
+}
