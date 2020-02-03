@@ -4,36 +4,54 @@
 
 {% block body %}
 <div class="row">
-
-    <h1 class="h2 col-8 offset-2 mt-5 text-center"> Message de vue </h1>
-
+    <h1 class="col-12 text-center h2 my-4">Sujet : {{ subject.title }}</h1>                 {# Affichage des titres du sujet #}
+    <h2 class="h2 col-8 offset-2 mt-5 text-center"> Message de vue </h2>
 </div>
-<div class="row">
-    <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
-        Liste des message du sujet :{{ subject.title }}
-    </p>
-</div>
-<div class="row">
-    {% for message in subject.messages %}
-    <div class="col-5 offset-3 text-center my-8">
-        <p class="bg-danger text-light text-left p-3">
-            {{ message.content }}
-        </p>
-    </div>
-        <br>
-    <div>
-        <p class="text-danger text-right text-center my-8">
-            Par {{ message.author.pseudonyme }}
-            <br>
-            Le {{ message.publicationDate|date("m/d/Y") }}
-        </p>
-    </div>
 
-    {% endfor %}
-    {% if app.user %}
-        <div  class="col-12 text-center">
-            {{ form(form) }}    
+
+<div class="row my-4">
+    <div class="col-12 col-md-10 offset-md-1">
+
+        {% for message in subject.messages %}
+
+        <div class="subject row p-3 my-3 border border-danger rounded">
+            <div class="mb-3 mb-lg-0 col">
+                Posté par <span class="text-info">{{ message.author.pseudonyme }}</span>
+                <hr>
+                {{ message.content }}
+                <hr>
+                <div class="mt-auto text-right">
+                    <small>{{ message.publicationDate|date('d/m/Y h:i') }}</small>
+                    <i class="far fa-calendar-alt fa-size ml-1"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-2 mt-auto text-right">
+                {{ message.author.pseudonyme }}
+                <i class="fas fa-user fa-size ml-2"></i>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 py-5">
+                    {{ knp_pagination_render(messageForum) }}   {# Affichage de la pagination #}
+                </div>
+            </div>
+        </div>
+
+        {% if app.user %}
+        <div class="row">
+            <h2 class="text-center col-12 my-3">Créer un nouveau message</h2>
+            <div class="col-12 col-md-6 offset-md-3 text-center">
+                {{ form(form) }}
+            </div>
         </div>
     {% endif %}
+
+    </div>
 </div>
+
 {% endblock %}

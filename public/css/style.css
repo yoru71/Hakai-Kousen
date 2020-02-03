@@ -8,8 +8,24 @@
 body{
     font-family:"BreeSerif", Arial;
 }
-    
+
 #main-navbar .nav-item>.nav-link{
+    font-size: 1.5rem;
+}
+
+#main-navbar .nav-link.active{
+    color: white;
+}
+
+.fa-size{
+    font-size: 1.6rem;
+}
+
+.subject{
+    background-color: rgb(255, 224, 224);
+}
+
+#main-navbar nav-item>.nav-link{
     font-size: 1.5rem;
 }
 
@@ -41,37 +57,48 @@ body{
 a.facebook{
     color: #3B5998;
 }
+
 a.discord{
     color: #7289DA;
 }
+
 a.twitter{
     color: #00ACEE;
 }
+
 .tel{
     color: rgb(51, 41, 41);
 }
+
 td{
     text-align: center;
 }
+
 table, th, td {
     border: 2px solid black;
-  } 
+}
+
 .table1{
     background-color: rgb(196, 193, 193);
 }
+
 .table2{
     font-weight: bold;
 }
+
 div #list_de_trucs{
 	margin:10px auto;
 	width:100%;
 	min-width:400px;
 	max-width:700px;
 }
+
 div #list_de_trucs table{
 	margin:0px;
     width:100%;
 }
+
 .feature{
     color:#ffffff;
 }
+

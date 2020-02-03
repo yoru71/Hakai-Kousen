@@ -3,40 +3,49 @@
 {% block title %} Sujet {% endblock %}
 
 {% block body %}
-<div class="row">
 
-    <h1 class="h2 col-8 offset-2 mt-5 text-center"> Sujet de vue </h1>
 
-</div>
-<div class="row">
-    <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
-        Liste des sujet du forum :  {{ forum.title }}
-    </p>
-</div>
+    <div class="row">
+        <h1 class="col-12 text-center h2 my-4">Sujets du forum : {{ forum.title }}</h1>             {# Affichage du titre du forum #}
+        <p class="text-center col-12"><a href="{{ path('forum') }}">Retour liste des forums</a></p>
+    </div>
 
-<div class="row">
-    {% for subject in forum.subjects %}
-    <div class="col-5 offset-3 text-center my-8">
-        <p class="bg-danger text-light text-left p-3">
-            <a href="{{path('MessageSubject', {id: subject.id })}}" class="bg-danger text-light"> {{ subject.title }}</a>
-            <br>
-        </p>
+    <div class="row my-4">
+        <div class="col-12 col-md-10 offset-md-1">
+            {% for subject in forum.subjects %}                                                     {# Boucle pour afficher les subject title, author ect... #}
+                <div class="subject row p-3 my-3 border border-danger rounded">
+                    <div class="mb-3 mb-lg-0 col subject-title">
+                        <a href="{{path('MessageSubject', {slug: subject.slug })}}" class="text-light text-dark">           {# Redirection avec les slug #}
+
+                        <i class="fas fa-dungeon fa-size mr-2"></i>{{ subject.title }}</a> ({{ subject.messages|length }})
+                    </div>
+
+                    <div class="mb-3 mb-lg-0 col-lg-2 subject-date"><i class="far fa-calendar-alt fa-size mr-2"></i>{{ subject.publicationDate|date('d/m/Y h:i') }}</div>
+
+                    <div class="col-lg-2 subject-author"><i class="fas fa-user fa-size mr-2"></i>{{ subject.author.pseudonyme }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <div>
-        <p class="text-danger text-right text-center my-8">
-            Par {{ subject.author.pseudonyme }} 
-            <br>
-            le {{ subject.publicationDate|date("m/d/Y") }}
-        </p>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 py-5">
+                {{ knp_pagination_render(subjetPage) }}         {# Affichage de la pagination #}
+            </div>
+        </div>
     </div>
-    <br>
-    {% endfor %}
-    </div>
+
+
     {% if app.user %}
-   
-        <div  class="col-12 text-center">
-            {{ form(form) }}    
+        <div class="row">
+            <h2 class="text-center col-12 my-3">Créer un nouveau sujet</h2>
+            <div class="col-12 col-md-6 offset-md-3 text-center">
+                {{ form(form) }}
+            </div>
         </div>
     {% endif %}
 </div>
+
 {% endblock %}

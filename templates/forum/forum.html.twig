@@ -8,18 +8,27 @@
     <h1 class="h2 col-8 offset-2 mt-5 text-center">Forum</h1>
 
 </div>
-<div class="row">
-    {% for forum in forums %}
-        <div class="col-6 offset-3 text-center card my-1 p-0">
-            <p class="bg-danger text-light">
-                <a href="{{path('subjectForum', {id: forum.id })}}" class="h5 bg-danger text-light"> {{ forum.title }}</a>
-            <div>
-                {{ forum.description }}
-                <br>
-            </div>
-            </p>
-        </div>
-    {% endfor %}
-</div>
-{% endblock %}
 
+
+<div class="row my-4">
+    <div class="col-12 col-md-10 offset-md-1">
+
+        {% for forum in forums %}
+
+        <div class="subject row p-3 my-3 border border-danger rounded">
+            <div class="mb-3 mb-lg-0 col subject-title"><a href="{{path('subjetForumPage', {slug: forum.slug })}}"              {# Redirection avec les slug #}
+                    class="text-light text-dark"><i class="far fa-folder-open fa-size mr-2"></i>
+                    {{ forum.title }}</a>
+            </div>
+
+            <div class="mb-3 mb-lg-0 col">
+                <i class="fab fa-fort-awesome fa-size mr-2"> {{ forum.description }}</i>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
