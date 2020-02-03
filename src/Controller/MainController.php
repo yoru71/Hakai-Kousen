@@ -27,6 +27,7 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
     /**
      * @Route("/rules", name="rules")
      */
@@ -34,6 +35,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/rules.html.twig');
     }
+
     /**
      * @Route("/pokedex", name="pokedex")
      */
@@ -41,6 +43,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/pokedex.html.twig');
     }
+
     /**
      * @Route("/inscription", name="inscription")
      */
@@ -48,6 +51,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/inscription.html.twig');
     }
+
     /**
      * @Route("/connexion", name="connexion")
      */
@@ -55,6 +59,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/connexion.html.twig');
     }
+
     /**
      * @Route("/deconnexion", name="deconnexion")
      */
@@ -62,6 +67,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/deconnexion.html.twig');
     }
+
     /**
      * @Route("/profil", name="profil")
      * @Security("is_granted('ROLE_USER')")
@@ -72,6 +78,7 @@ class MainController extends AbstractController
             'user' => $this->getUser()
         ]);
     }
+
     /**
      * @Route("/change", name="change")
      */
@@ -79,5 +86,4 @@ class MainController extends AbstractController
     {
         return $this->render('main/changePassword.html.twig');   
     }
-
 }

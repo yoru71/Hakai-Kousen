@@ -1,39 +1,46 @@
 {% extends "base.html.twig" %}
 
-{% block title %} Message {% endblock %}
+{% block title %}   Message   {% endblock %}
 
 {% block body %}
-<div class="row">
 
-    <h1 class="h2 col-8 offset-2 mt-5 text-center"> Message de vue </h1>
-
-</div>
-<div class="row">
-    <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
-        Liste des message du sujet :{{ subject.title }}
-    </p>
-</div>
-<div class="row">
-    {% for message in subject.messages %}
-    <div class="col-5 offset-3 text-center my-8">
-        <p class="bg-danger text-light text-left p-3">
-            {{ message.content }}
-        </p>
+    <div class="row">
+        <h1 class="h2 col-8 offset-2 mt-5 text-center"> Message de vue </h1>
     </div>
-        <br>
-    <div>
-        <p class="text-danger text-right text-center my-8">
-            Par {{ message.author.pseudonyme }}
-            <br>
-            Le {{ message.publicationDate|date("m/d/Y") }}
+
+    <div class="row">
+        <p class="text-danger h2 col-8 offset-2 mt-5 text-center">
+            Liste des message du sujet : {{ subject.title }}    {# Affichage des titres du sujet #}
         </p>
     </div>
 
-    {% endfor %}
-    {% if app.user %}
-        <div  class="col-12 text-center">
-            {{ form(form) }}    
+    <div class="row">
+        {% for message in subject.messages %}                   {# Boucle pour afficher les message content, author ect... #}
+        <div class="col-5 offset-3 text-center my-8">
+            <p class="bg-danger text-light text-left p-3">
+                {{ message.content }}
+            </p>
         </div>
-    {% endif %}
-</div>
+
+            <br>
+
+        <div>
+            <p class="text-danger text-right text-center my-8">
+                Par {{ message.author.pseudonyme }}
+                <br>
+                Le {{ message.publicationDate|date("m/d/Y") }}
+            </p>
+        </div>
+
+        {% endfor %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 py-5">
+                    {{ knp_pagination_render(messageForum) }}   {# Affichage de la pagination #}
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

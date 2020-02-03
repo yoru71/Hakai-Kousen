@@ -1,25 +1,30 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Forum{% endblock %}
+{% block title %}   Forum   {% endblock %}
 
 {% block body %}
-<div class="row">
 
-    <h1 class="h2 col-8 offset-2 mt-5 text-center">Forum</h1>
+    <div class="row">
+        <h1 class="h2 col-8 offset-2 mt-5 text-center">Forum</h1>
+    </div>
 
-</div>
-<div class="row">
-    {% for forum in forums %}
-        <div class="col-6 offset-3 text-center card my-1 p-0">
-            <p class="bg-danger text-light">
-                <a href="{{path('subjectForum', {id: forum.id })}}" class="h5 bg-danger text-light"> {{ forum.title }}</a>
-            <div>
-                {{ forum.description }}
-                <br>
+    <div class="row">
+
+        {# On fais une boucle pour afficher le titre et la description du forum #}
+        {% for forum in forums %}
+
+            <div class="col-6 offset-3 text-center card my-1 p-0">
+                <p class="bg-danger text-light">
+                    <a href="{{path('subjetForumPage', {slug: forum.slug })}}" class="h5 bg-danger text-light"> {{ forum.title }}</a>
+                <div>
+                    {{ forum.description }}
+                    <br>
+                </div>
+                </p>
             </div>
-            </p>
-        </div>
-    {% endfor %}
-</div>
-{% endblock %}
 
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
